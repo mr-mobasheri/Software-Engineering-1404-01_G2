@@ -17,6 +17,7 @@ $TeamPort = @{
 }
 
 Write-Host "Starting core..."
+docker network inspect app404_net *> $null; if ($LASTEXITCODE -ne 0) { docker network create app404_net | Out-Null }
 docker compose up -d --build
 
 foreach ($t in 1..13) {

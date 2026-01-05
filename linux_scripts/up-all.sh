@@ -18,6 +18,7 @@ declare -A TEAM_PORT=(
 )
 
 echo "Starting core..."
+docker network inspect app404_net >/dev/null 2>&1 || docker network create app404_net
 docker compose up -d --build
 
 for t in $(seq 1 13); do
